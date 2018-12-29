@@ -1,0 +1,7 @@
+.row {
+  display: flex;
+}
+
+.game {
+  margin: 10% auto auto 20%;
+}

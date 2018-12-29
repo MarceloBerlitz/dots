@@ -1,44 +1,61 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CelTypesEnum } from './cel-types.enum';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { SidesModel } from './model/sides.model';
+import { CelService } from './cel.service';
+import { SidesChangeModel } from './model/sides-change.model';
+import { SidesChangeBuilder } from './builder/sides-change-builder';
 
 @Component({
   selector: 'app-cel',
   templateUrl: './cel.component.html',
   styleUrls: ['./cel.component.css']
 })
-export class CelComponent implements OnInit {
+export class CelComponent implements OnInit, DoCheck {
 
   @Input()
-  public celType: CelTypesEnum = CelTypesEnum.DEFAULT;
+  public rowIndex: number;
+
+  @Input()
+  public celIndex: number;
 
   public owner: string;
 
   @Input()
-  public sides = new SidesModel();
+  public sides: SidesModel;
 
   @Output()
-  public sidesChange: EventEmitter<SidesModel> = new EventEmitter();
+  public sidesChange: EventEmitter<SidesChangeModel> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private service: CelService
+  ) { }
 
-  ngOnInit() {
-    if(this.celType == CelTypesEnum.DEFAULT) {
+  ngOnInit() { }
 
-    }
+  ngDoCheck() {
+    this.updateOwner();
   }
 
   public clicked(event: MouseEvent) {
-    console.log(event);
-      Object.keys(this.sides).forEach(prop => {
-        console.log(prop);
-        if(!this.sides[prop]) {
-          this.sides[prop] = event.srcElement.classList.contains(prop) ? true : this.sides[prop];
-        }
-      });
-      if(Object.keys(this.sides).every(prop => this.sides[prop] === true)) this.owner = 'M';
-      this.sidesChange.emit(this.sides);
-    console.log(this.sides);
+    this.updateSides(event);
+    this.updateOwner();
+    this.sidesChange.emit(this.getSidesChangeEvent());
+  }
+
+  private updateOwner(): void {
+    this.owner = this.service.getOwner(this.sides)
+  }
+
+  private updateSides(event: MouseEvent): void {
+    this.sides = this.service.getUpdatedSides(this.sides, event);
+  }
+
+  private getSidesChangeEvent(): SidesChangeModel {
+    return SidesChangeBuilder.get()
+      .rowIndex(this.rowIndex)
+      .celIndex(this.celIndex)
+      .sides(this.sides)
+      .build()
   }
 
 }

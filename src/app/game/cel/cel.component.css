@@ -28,7 +28,19 @@
   cursor: pointer;
 }
 
+.horizontal-double {
+  width: 40px;
+  height: 10px;
+  cursor: pointer;
+}
+
 .vertical {
+  width: 5px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.vertical-double {
   width: 5px;
   height: 40px;
   cursor: pointer;
@@ -36,7 +48,6 @@
 
 .square {
   margin: 0px;
-  border: 0px;
   padding: 0px;
   width: 50px;
   height: 50px;
