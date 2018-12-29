@@ -1,0 +1,19 @@
+<div class="square">
+  <div class="row">
+    <div class="cel-border dot"></div>
+    <div class="cel-border horizontal top {{ sides.top ? 'selected' : '' }}" (click)="clicked($event)"></div>
+    <div class="cel-border dot"></div>
+  </div>
+  <div class="row">
+    <div class="cel-border vertical left {{ sides.left ? 'selected' : '' }}" (click)="clicked($event)"></div>
+    <div class="content">
+      {{owner}}
+    </div>
+    <div class="cel-border vertical right {{ sides.right ? 'selected' : '' }}" (click)="clicked($event)"></div>
+  </div>
+  <div class="row">
+    <div class="cel-border dot"></div>
+    <div class="cel-border horizontal bottom {{ sides.bottom ? 'selected' : '' }}" (click)="clicked($event)"></div>
+    <div class="cel-border dot"></div>
+  </div>
+</div>
