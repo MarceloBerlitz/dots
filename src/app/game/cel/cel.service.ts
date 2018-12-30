@@ -15,7 +15,6 @@ export class CelService {
   public getUpdatedSides(sides: SidesModel, event: MouseEvent): SidesModel {
     const newSides = Object.assign(sides);
     Object.keys(newSides).forEach(prop => {
-      console.log(prop);
       if(!newSides[prop]) {
         newSides[prop] = event.srcElement.classList.contains(prop) ? true : newSides[prop];
       }

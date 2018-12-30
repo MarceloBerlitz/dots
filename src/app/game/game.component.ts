@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { SidesModel } from './cel/model/sides.model';
 import { SidesChangeModel } from './cel/model/sides-change.model';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { GameService } from './game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit, OnDestroy{
+export class GameComponent implements OnInit, DoCheck{
 
 
   private width: number = 20;
@@ -17,6 +17,10 @@ export class GameComponent implements OnInit, OnDestroy{
   private height: number = 10;
 
   public stateMatrix: SidesModel[][] = [];
+
+  private markedNumber: number = 0;
+
+  public winner: string = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,7 +35,14 @@ export class GameComponent implements OnInit, OnDestroy{
     this.initializeStateMatrix();
   }
 
-  ngOnDestroy(): void { }
+  ngDoCheck(): void {
+    const currentMarked = this.gameService.getMarkedNumber(this.stateMatrix);
+    if(this.markedNumber < currentMarked) this.markedNumber = currentMarked;
+    else this.gameService.nextPlayer();
+    if(this.markedNumber === this.width * this.height) {
+      alert('fim de jogo')
+    }
+  }
 
   public updateOtherCels(event): void {
     this.updateStateMatrix(event);
