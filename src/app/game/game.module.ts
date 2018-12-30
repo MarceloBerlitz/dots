@@ -16,4 +16,4 @@ import { GameComponent } from './game.component';
     GameComponent
   ]
 })
-export class Game { }
+export class GameModule { }

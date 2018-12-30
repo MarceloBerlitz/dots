@@ -1,9 +1,10 @@
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 import { SidesModel } from './model/sides.model';
 import { CelService } from './cel.service';
 import { SidesChangeModel } from './model/sides-change.model';
 import { SidesChangeBuilder } from './builder/sides-change-builder';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-cel',
@@ -27,23 +28,29 @@ export class CelComponent implements OnInit, DoCheck {
   public sidesChange: EventEmitter<SidesChangeModel> = new EventEmitter();
 
   constructor(
-    private service: CelService
+    private service: CelService,
+    private gameService: GameService
   ) { }
 
   ngOnInit() { }
 
   ngDoCheck() {
+    this.sync();
+  }
+
+  private sync(): void {
     this.updateOwner();
   }
 
   public clicked(event: MouseEvent) {
-    this.updateSides(event);
-    this.updateOwner();
-    this.sidesChange.emit(this.getSidesChangeEvent());
+      this.updateSides(event);
+      this.sidesChange.emit(this.getSidesChangeEvent());
+      this.updateOwner();
+      if(!this.owner) this.gameService.nextPlayer()
   }
 
   private updateOwner(): void {
-    this.owner = this.service.getOwner(this.sides)
+    if(!this.owner) this.owner = this.service.getOwner(this.sides);
   }
 
   private updateSides(event: MouseEvent): void {

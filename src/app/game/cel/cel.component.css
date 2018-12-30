@@ -6,7 +6,7 @@
 }
 
 .content {
-  background-color: #eee;
+  background-color: #eef;
   margin: 0px;
   border: 0px;
   padding: 0px;
@@ -28,19 +28,7 @@
   cursor: pointer;
 }
 
-.horizontal-double {
-  width: 40px;
-  height: 10px;
-  cursor: pointer;
-}
-
 .vertical {
-  width: 5px;
-  height: 40px;
-  cursor: pointer;
-}
-
-.vertical-double {
   width: 5px;
   height: 40px;
   cursor: pointer;

@@ -1,0 +1,25 @@
+<form #configForm [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label>Jogador 1
+      <input type="text" placeholder="Jogador 1" formControlName="player1">
+    </label>
+  </div><br/>
+  <div class="form-control">
+    <label>Jogador 2
+     <input type="text" placeholder="Jogador 2" formControlName="player2">
+    </label>
+  </div><br/>
+  <div class="form-control">
+    <label>Linhas
+     <input type="number" placeholder="Linhas" formControlName="lines">
+    </label>
+  </div><br/>
+  <div class="form-control">
+    <label>Colunas
+      <input type="number" placeholder="Colunas" formControlName="cols">
+    </label>
+  </div><br/>
+  <button type="submit" [disabled]="configForm.invalid">
+    Jogar
+  </button>
+</form>
