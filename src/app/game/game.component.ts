@@ -20,7 +20,7 @@ export class GameComponent implements OnInit, DoCheck{
 
   private markedNumber: number = 0;
 
-  public winner: string = null;
+  private selectedSides: number = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,8 +37,15 @@ export class GameComponent implements OnInit, DoCheck{
 
   ngDoCheck(): void {
     const currentMarked = this.gameService.getMarkedNumber(this.stateMatrix);
-    if(this.markedNumber < currentMarked) this.markedNumber = currentMarked;
-    else this.gameService.nextPlayer();
+    const currentSides =  this.gameService.getSelectedSides(this.stateMatrix);
+    if(this.markedNumber < currentMarked) {
+      this.markedNumber = currentMarked;
+      this.selectedSides = currentSides;
+    }
+    else if(this.selectedSides < currentSides) {
+      this.selectedSides = currentSides;
+      this.gameService.nextPlayer();
+    }
     if(this.markedNumber === this.width * this.height) {
       alert('fim de jogo')
     }

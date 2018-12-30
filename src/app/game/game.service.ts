@@ -37,6 +37,19 @@ export class GameService {
     return counter;
   }
 
+  public getSelectedSides(matrix: SidesModel[][]): number {
+    let counter = 0;
+    matrix.forEach(line => {
+      line.forEach(cel => {
+        Object.keys(cel).forEach(prop => {
+          if(cel[prop] === true) counter++;
+        });
+      });
+    });
+    console.log('Selected Sides', counter);
+    return counter;
+  }
+
   private getRandomIndex(length: number): number {
     return Math.floor(Math.random() * length);
   }
