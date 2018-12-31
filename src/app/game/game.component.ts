@@ -18,6 +18,8 @@ export class GameComponent implements OnInit, DoCheck{
 
   public stateMatrix: SidesModel[][] = [];
 
+  public currentPlayer: string = this.gameService.getCurrentPlayer();
+
   private markedNumber: number = 0;
 
   private selectedSides: number = 0;
@@ -52,6 +54,7 @@ export class GameComponent implements OnInit, DoCheck{
   }
 
   public updateOtherCels(event): void {
+    this.currentPlayer = this.gameService.getCurrentPlayer();
     this.updateStateMatrix(event);
   }
 

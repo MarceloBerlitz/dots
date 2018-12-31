@@ -1,4 +1,4 @@
-<h1>Vez de {{gameService.getCurrentPlayer()}} <a routerLink="/" href="#">voltar</a></h1>
+<h1>Vez de {{currentPlayer}} <a routerLink="/" href="#">voltar</a></h1>
 <div class="game">
   <div *ngFor="let rows of stateMatrix; let rowIndex = index" class="row">
     <div *ngFor="let cel of rows; let celIndex = index">
