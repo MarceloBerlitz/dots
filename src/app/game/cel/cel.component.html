@@ -1,8 +1,8 @@
 <div class="square">
   <div class="row">
-    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isLeftCol() }"></div>
+    <div class="cel-border dot top-left-dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isLeftCol() }"></div>
     <div class="cel-border horizontal top" [ngClass]="{ 'selected': sides.top, 'horizontal-limit': isTopRow() }" (click)="clicked($event)"></div>
-    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isRightCol() }"></div>
+    <div class="cel-border dot top-right-dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isRightCol() }"></div>
   </div>
   <div class="row">
     <div class="cel-border vertical left" [ngClass]="{ 'selected': sides.left, 'vertical-limit': isLeftCol() }" (click)="clicked($event)"></div>
@@ -12,8 +12,8 @@
     <div class="cel-border vertical right" [ngClass]="{ 'selected': sides.right, 'vertical-limit': isRightCol() }" (click)="clicked($event)"></div>
   </div>
   <div class="row">
-    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isLeftCol() }"></div>
+    <div class="cel-border dot bottom-left-dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isLeftCol() }"></div>
     <div class="cel-border horizontal bottom" [ngClass]="{ 'selected': sides.bottom, 'horizontal-limit': isBottomRow() }" (click)="clicked($event)"></div>
-    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isRightCol() }"></div>
+    <div class="cel-border dot bottom-right-dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isRightCol() }"></div>
   </div>
 </div>

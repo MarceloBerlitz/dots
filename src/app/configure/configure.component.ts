@@ -15,12 +15,12 @@ export class ConfigureComponent implements OnInit {
     private router: Router
   ) {
     this.formGroup = new FormGroup({
-      player1: new FormControl('', [Validators.required]),
-      player2: new FormControl('', [Validators.required]),
-      lines: new FormControl('', [Validators.required]),
-      cols: new FormControl('', [Validators.required]),
+      player1: new FormControl('', [Validators.required, Validators.maxLength(1)]),
+      player2: new FormControl('', [Validators.required, Validators.maxLength(1)]),
+      lines: new FormControl('', [Validators.required, Validators.min(2), Validators.max(20)]),
+      cols: new FormControl('', [Validators.required, Validators.min(2), Validators.max(20)]),
 
-    })
+    });
   }
 
   ngOnInit() {

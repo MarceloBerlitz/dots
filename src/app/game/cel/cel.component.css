@@ -6,7 +6,6 @@
 }
 
 .content {
-  background-color: #eef;
   margin: 0;
   border: 0;
   padding: 0;
@@ -35,6 +34,7 @@
 }
 
 .square {
+  background-color: #eee;
   margin: 0;
   padding: 0;
   min-width: 50px;
@@ -50,19 +50,19 @@
 }
 
 .left {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .top {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .right {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .bottom {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .selected {
@@ -75,4 +75,112 @@
 
 .vertical-limit {
   width: 10px;
+}
+
+.top-left-dot {
+  border-bottom-right-radius: 5px;
+}
+
+.top-right-dot {
+  border-bottom-left-radius: 5px;
+}
+
+.bottom-left-dot {
+  border-top-right-radius: 5px;
+}
+
+.bottom-right-dot {
+  border-top-left-radius: 5px;
+}
+
+.horizontal-limit.vertical-limit {
+  border-radius: 5px;
+}
+
+.horizontal-limit.horizontal {
+  border-radius: 5px;
+}
+
+.vertical-limit.vertical {
+  border-radius: 5px;
+}
+
+.horizontal-limit.top-left-dot {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.horizontal-limit.top-right-dot {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.horizontal-limit.bottom-left-dot {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.horizontal-limit.bottom-right-dot {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.vertical-limit.top-left-dot {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.vertical-limit.bottom-left-dot {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.vertical-limit.top-right-dot {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.vertical-limit.bottom-right-dot {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.vertical.left {
+  /*border-top-right-radius: 5px;*/
+  /*border-bottom-right-radius: 5px;*/
+  background: linear-gradient(to left,  #eee 0%,#eee 50%,black 50%,black 100%);
+}
+
+.vertical.right {
+  /*border-top-left-radius: 5px;*/
+  /*border-bottom-left-radius: 5px;*/
+  background: linear-gradient(to right,  #eee 0%,#eee 50%,black 50%,black 100%);
+}
+
+.horizontal.top {
+  /*border-bottom-left-radius: 5px;*/
+  /*border-bottom-right-radius: 5px;*/
+  background: linear-gradient(to top,  #eee 0%,#eee 50%,black 50%,black 100%);
+}
+
+.horizontal.bottom {
+  /*border-top-left-radius: 5px;*/
+  /*border-top-right-radius: 5px;*/
+  background: linear-gradient(to bottom,  #eee 0%,#eee 50%,black 50%,black 100%);
+}
+
+.horizontal-limit.top {
+  background: linear-gradient(to top,  #eee 0%,#eee 25%,black 25%,black 75%, #eee 75%,#eee 100%);
+}
+
+.horizontal-limit.bottom {
+  background: linear-gradient(to top,  #eee 0%,#eee 25%,black 25%,black 75%, #eee 75%,#eee 100%);
+}
+
+.vertical-limit.left {
+  background: linear-gradient(to left,  #eee 0%,#eee 25%,black 25%,black 75%, #eee 75%,#eee 100%);
+}
+
+.vertical-limit.right {
+  background: linear-gradient(to left,  #eee 0%,#eee 25%,black 25%,black 75%, #eee 75%,#eee 100%);
 }
