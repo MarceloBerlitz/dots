@@ -27,10 +27,10 @@ export class ConfigureComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if(this.formGroup.valid) {
+    if (this.formGroup.valid) {
       this.router.navigate(['game'], this.getQueryParams());
     } else {
-      alert('Preencha todo o formulário');
+      alert('Formulário inválido.');
     }
   }
 
@@ -42,7 +42,7 @@ export class ConfigureComponent implements OnInit {
           lines: this.formGroup.controls['lines'].value,
           cols: this.formGroup.controls['cols'].value
         }
-    }
+    };
   }
 
 }
