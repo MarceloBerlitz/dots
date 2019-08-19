@@ -75,11 +75,11 @@ export class CelComponent implements DoCheck {
   }
 
   public isBottomRow(): boolean {
-    return this.rowIndex === this.matrixHeight - 1;
+    return this.rowIndex === this.matrixWidth - 1;
   }
 
   public isRightCol(): boolean {
-    return this.celIndex === this.matrixWidth - 1;
+    return this.celIndex === this.matrixHeight - 1;
   }
 
 }

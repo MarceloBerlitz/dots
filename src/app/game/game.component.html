@@ -1,13 +1,19 @@
-<h1>Vez de {{gameService.getCurrentPlayer()}} <a routerLink="/" href="#">voltar</a></h1>
-<div class="game">
-  <div *ngFor="let rows of stateMatrix; let rowIndex = index" class="row">
-    <div *ngFor="let cel of rows; let celIndex = index">
-      <app-cel [rowIndex]="rowIndex"
-               [celIndex]="celIndex"
-               [matrixWidth]="stateMatrix.length"
-               [matrixHeight]="rows.length"
-               (sidesChange)="updateOtherCels($event)"
-               [sides]="cel"></app-cel>
-    </div><br/>
+<div class="container">
+  <div class="top-bar">
+    <h1>Vez de {{gameService.getCurrentPlayer()}}</h1>
+    <a routerLink="/" href="#">Voltar</a>
+  </div>
+
+  <div class="game">
+    <div *ngFor="let rows of stateMatrix; let rowIndex = index" class="row">
+      <div *ngFor="let cel of rows; let celIndex = index">
+        <app-cel [rowIndex]="rowIndex"
+                 [celIndex]="celIndex"
+                 [matrixWidth]="stateMatrix.length"
+                 [matrixHeight]="rows.length"
+                 (sidesChange)="updateOtherCels($event)"
+                 [sides]="cel"></app-cel>
+      </div><br/>
+    </div>
   </div>
 </div>
