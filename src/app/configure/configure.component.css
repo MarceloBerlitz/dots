@@ -1,5 +1,6 @@
 * {
   font-family: Arial;
+  color: #286962;
 }
 
 form {
@@ -26,10 +27,10 @@ form {
 
 form button {
   width: 100%;
-  background-color: #ddd;
+  background-color: #C1D9D6;
   border: none;
   padding: .5rem;
-  color: #333;
+  color: #286962;
   font-weight: bold;
   /*box-shadow: grey 2px 2px 5px;*/
   cursor: pointer;
