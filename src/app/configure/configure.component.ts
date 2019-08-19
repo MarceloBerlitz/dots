@@ -37,8 +37,8 @@ export class ConfigureComponent implements OnInit {
   private getQueryParams(): NavigationExtras {
     return { queryParams:
         {
-          player1: this.formGroup.controls['player1'].value,
-          player2: this.formGroup.controls['player2'].value,
+          player1: this.formGroup.controls['player1'].value.toString().toUpperCase(),
+          player2: this.formGroup.controls['player2'].value.toString().toUpperCase(),
           lines: this.formGroup.controls['lines'].value,
           cols: this.formGroup.controls['cols'].value
         }
