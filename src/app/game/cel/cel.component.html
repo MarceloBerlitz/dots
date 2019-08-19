@@ -1,19 +1,19 @@
 <div class="square">
   <div class="row">
-    <div class="cel-border dot"></div>
-    <div class="cel-border horizontal top {{ sides.top ? 'selected' : '' }}" (click)="clicked($event)"></div>
-    <div class="cel-border dot"></div>
+    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isLeftCol() }"></div>
+    <div class="cel-border horizontal top" [ngClass]="{ 'selected': sides.top, 'horizontal-limit': isTopRow() }" (click)="clicked($event)"></div>
+    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isTopRow(), 'vertical-limit': isRightCol() }"></div>
   </div>
   <div class="row">
-    <div class="cel-border vertical left {{ sides.left ? 'selected' : '' }}" (click)="clicked($event)"></div>
+    <div class="cel-border vertical left" [ngClass]="{ 'selected': sides.left, 'vertical-limit': isLeftCol() }" (click)="clicked($event)"></div>
     <div class="content">
       {{owner}}
     </div>
-    <div class="cel-border vertical right {{ sides.right ? 'selected' : '' }}" (click)="clicked($event)"></div>
+    <div class="cel-border vertical right" [ngClass]="{ 'selected': sides.right, 'vertical-limit': isRightCol() }" (click)="clicked($event)"></div>
   </div>
   <div class="row">
-    <div class="cel-border dot"></div>
-    <div class="cel-border horizontal bottom {{ sides.bottom ? 'selected' : '' }}" (click)="clicked($event)"></div>
-    <div class="cel-border dot"></div>
+    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isLeftCol() }"></div>
+    <div class="cel-border horizontal bottom" [ngClass]="{ 'selected': sides.bottom, 'horizontal-limit': isBottomRow() }" (click)="clicked($event)"></div>
+    <div class="cel-border dot" [ngClass]="{ 'horizontal-limit': isBottomRow(), 'vertical-limit': isRightCol() }"></div>
   </div>
 </div>

@@ -18,6 +18,12 @@ export class CelComponent implements DoCheck {
   @Input()
   public celIndex: number;
 
+  @Input()
+  public matrixWidth: number;
+
+  @Input()
+  public matrixHeight: number;
+
   public owner: string;
 
   @Input()
@@ -40,12 +46,14 @@ export class CelComponent implements DoCheck {
   }
 
   private updateOwner(): void {
-    if(!this.owner) this.owner = this.service.getOwner(this.sides);
+    if (!this.owner) {
+      this.owner = this.service.getOwner(this.sides);
+    }
   }
 
   private updateSides(event: MouseEvent): void {
     const newSides = this.service.getUpdatedSides(this.sides, event);
-    if(!this.sides.equals(newSides)) {
+    if (!this.sides.equals(newSides)) {
       this.sides = newSides;
     }
   }
@@ -55,7 +63,23 @@ export class CelComponent implements DoCheck {
       .rowIndex(this.rowIndex)
       .celIndex(this.celIndex)
       .sides(this.sides)
-      .build()
+      .build();
+  }
+
+  public isTopRow(): boolean {
+    return this.rowIndex === 0;
+  }
+
+  public isLeftCol(): boolean {
+    return this.celIndex === 0;
+  }
+
+  public isBottomRow(): boolean {
+    return this.rowIndex === this.matrixHeight - 1;
+  }
+
+  public isRightCol(): boolean {
+    return this.celIndex === this.matrixWidth - 1;
   }
 
 }

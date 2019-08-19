@@ -9,7 +9,7 @@ import { GameService } from './game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit, DoCheck{
+export class GameComponent implements OnInit, DoCheck {
 
 
   private width: number = 20;
@@ -38,27 +38,30 @@ export class GameComponent implements OnInit, DoCheck{
   ngDoCheck(): void {
     const currentMarked = this.gameService.getMarkedNumber(this.stateMatrix);
     const currentSides =  this.gameService.getSelectedSides(this.stateMatrix);
-    if(this.markedNumber < currentMarked) {
+    if (this.markedNumber < currentMarked) {
       this.markedNumber = currentMarked;
       this.selectedSides = currentSides;
-    }
-    else if(this.selectedSides < currentSides) {
+    } else if (this.selectedSides < currentSides) {
       this.selectedSides = currentSides;
       this.gameService.nextPlayer();
     }
-    if(this.markedNumber === this.width * this.height) {
-      alert('fim de jogo')
+    if (this.markedNumber === this.width * this.height) {
+      alert('fim de jogo');
     }
   }
 
   public updateOtherCels(event): void {
+    console.log('row', event.rowIndex);
+    console.log('cel', event.celIndex);
     this.updateStateMatrix(event);
   }
 
   private initializeStateMatrix(): void {
-    for(let i = 0; i < this.height; i++){
-      for(let t = 0; t < this.width; t++) {
-        if(!this.stateMatrix[i]) this.stateMatrix[i] = [];
+    for (let i = 0; i < this.height; i++) {
+      for (let t = 0; t < this.width; t++) {
+        if (!this.stateMatrix[i]) {
+          this.stateMatrix[i] = [];
+        }
         this.stateMatrix[i].push(new SidesModel());
       }
     }

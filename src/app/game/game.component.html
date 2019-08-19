@@ -4,6 +4,8 @@
     <div *ngFor="let cel of rows; let celIndex = index">
       <app-cel [rowIndex]="rowIndex"
                [celIndex]="celIndex"
+               [matrixWidth]="stateMatrix.length"
+               [matrixHeight]="rows.length"
                (sidesChange)="updateOtherCels($event)"
                [sides]="cel"></app-cel>
     </div><br/>
