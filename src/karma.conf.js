@@ -30,7 +30,8 @@ module.exports = function (config) {
         base: 'Chrome',
         flags:  [
           '--headless',
-          '--no-sandbox'
+          '--no-sandbox',
+          '--disable-gpu'
         ],
       }
     },
