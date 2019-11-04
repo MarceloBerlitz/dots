@@ -1,8 +1,19 @@
 version: 2
 jobs:
   node:
+    working_directory: ~/dots
     docker:
       - image: circleci/node:8
     steps:
       - checkout
-      - run: echo "test"
+      - run:
+        name: Show current branch
+        command: echo ${CIRCLE_BRANCH}
+
+      - run:
+        name: Install dependencies
+        command: npm install
+
+      - run:
+        name: Tests
+        command: npm run test
