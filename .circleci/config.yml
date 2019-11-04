@@ -19,13 +19,6 @@ jobs:
         command: npm run test
 
   build:
-    working_directory: ~/dots
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - run:
-        name: Build Project
-        command: npm run build
+    - step: node
 
 
