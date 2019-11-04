@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/dots
     docker:
-      - image: selenium/node-chrome
+      - image: thompsnm/nodejs-chrome
     steps:
       - checkout
       - run:
