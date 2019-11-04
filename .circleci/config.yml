@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  node:
+  build:
     working_directory: ~/dots
     docker:
       - image: circleci/node:8
@@ -17,22 +17,5 @@ jobs:
       - run:
         name: Tests
         command: npm run test
-
-  build:
-    working_directory: ~/dots
-      docker:
-        - image: circleci/node:8
-      steps:
-        - checkout
-        - run:
-          name: Build project
-          command: npm run build
-
-workflows:
-  version: 2
-  node-build:
-    jobs:
-      - node
-      - build
 
 
