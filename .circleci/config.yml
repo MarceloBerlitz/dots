@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/dots
     docker:
-      - image: circleci/node:8
+      - image: selenium/node-chrome
     steps:
       - checkout
       - run:
