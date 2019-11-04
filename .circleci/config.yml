@@ -7,15 +7,15 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Show current branch
-        command: echo ${CIRCLE_BRANCH}
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
 
       - run:
-        name: Install dependencies
-        command: npm install
+          name: Install dependencies
+          command: npm install
 
       - run:
-        name: Tests
-        command: npm run test
+          name: Tests
+          command: npm run test
 
 
