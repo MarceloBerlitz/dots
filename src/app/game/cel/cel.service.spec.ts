@@ -1,12 +1,26 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CelService } from './cel.service';
+import { GameService } from '../game.service';
 
 describe('CelService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: CelService;
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      CelService,
+      { provide: GameService, useClass: Stub }
+    ]
+  }).compileComponents()
+    .then(() => {
+      service = TestBed.get(CelService);
+
+  }));
 
   it('should be created', () => {
-    const service: CelService = TestBed.get(CelService);
     expect(service).toBeTruthy();
   });
 });
+
+class Stub {
+
+}

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CelComponent } from './cel.component';
+import { CelService } from './cel.service';
 
 describe('CelComponent', () => {
   let component: CelComponent;
@@ -8,18 +9,24 @@ describe('CelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CelComponent ]
+      declarations: [ CelComponent ],
+      providers: [
+        { provide: CelService, useClass: Stub }
+      ]
     })
-    .compileComponents();
-  }));
+    .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(CelComponent);
+        component = fixture.componentInstance;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+      });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class Stub {
+  getOwner() {}
+}

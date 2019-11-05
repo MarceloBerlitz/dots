@@ -1,0 +1,82 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/dots
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Build
+          command: npm run build:prod
+
+      - run:
+          name: Show files
+          command: ls
+
+      - persist_to_workspace:
+          root: ~/dots
+          paths:
+            - ./dist/dots/*
+            - ./deploy.js
+            - ./node_modules/*
+
+  test:
+    working_directory: ~/dots
+    docker:
+      - image: thompsnm/nodejs-chrome
+    steps:
+      - checkout
+
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Karma
+          command: npm run test:prod
+
+  deploy:
+    working_directory: ~/dots
+    docker:
+      - image: circleci/node:8
+    steps:
+      - attach_workspace:
+          at: ~/dots
+
+      - run:
+          name: Show files
+          command: ls
+
+      - run:
+          name: Deploy FTP
+          command: node deploy.js
+
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - build
+      - test
+      - deploy:
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              only: master
+
+

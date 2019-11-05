@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ConfigureComponent } from './configure.component';
 
@@ -8,7 +10,11 @@ describe('ConfigureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfigureComponent ]
+      declarations: [ ConfigureComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ],
+      providers: [
+        { provide: Router, useClass: Stub }
+      ]
     })
     .compileComponents();
   }));
@@ -23,3 +29,7 @@ describe('ConfigureComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class Stub {
+
+}

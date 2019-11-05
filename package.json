@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build",
     "test": "ng test",
+    "test:prod": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -22,6 +24,7 @@
     "@angular/router": "~7.0.0",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
+    "ftp-deploy": "^2.3.6",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
@@ -30,9 +33,9 @@
     "@angular/cli": "~7.0.3",
     "@angular/compiler-cli": "~7.0.0",
     "@angular/language-service": "~7.0.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
